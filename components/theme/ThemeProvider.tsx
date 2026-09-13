@@ -18,7 +18,6 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('light');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Read stored theme from localStorage or system preference
@@ -32,7 +31,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     setThemeState(initialTheme);
     applyTheme(initialTheme);
-    setMounted(true);
   }, []);
 
   const applyTheme = (t: Theme) => {
